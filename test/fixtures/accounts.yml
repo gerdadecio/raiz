@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_type_id: 1
+  entity_id: 1
+  amount: 
+  currency_id: 1
+
+two:
+  account_type_id: 1
+  entity_id: 1
+  amount: 
+  currency_id: 1

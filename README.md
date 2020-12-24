@@ -1,24 +1,35 @@
-# README
+### Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
+This application uses **Rails 5.2.4** and **Ruby 2.5.3**, there is an assumption that you have the rails environment and the other libraries needed to run a rails app.
 
-Things you may want to cover:
+- RVM - for managing ruby versions [RVM](https://rvm.io/rvm/install)
+- MySQL - database for this application
 
-* Ruby version
+You will also need to install Bundler:
+```
+gem install bundler
+```
 
-* System dependencies
+Once setup, install dependencies:
+```
+bundle install
+```
 
-* Configuration
+## Configuration
+Copy the included `.env.example` file and update the config accordingly:
+```
+cp .env.example .env
+```
 
-* Database creation
+## Developing
 
-* Database initialization
+To serve the application:
+```
+rails s
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run the unit tests:
+```
+rspec
+```
