@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: <%= ENV['RAIZ_DATABASE'] %>
   username: <%= ENV['RAIZ_DATABASE_USERNAME'] %>
   password: <%= ENV['RAIZ_DATABASE_PASSWORD'] %>
