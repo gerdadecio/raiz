@@ -1,0 +1,14 @@
+<h3>
+  Transfer funds from wallet ID: <%= @wallet_account.id %>
+  <br/>
+  Current balance: <%= @wallet_account.balance.format %>
+</h3>
+<p>
+  <%= form_with model: @wallet_account, url: transfer_fund_wallet_path(@wallet_account.id), method: :post do |form| %>
+    <%= form.label "To Account ID:" %>
+    <%= form.number_field "to" %>
+    <%= form.label "Amount:" %>
+    <%= form.text_field "amount", value: 0 %>
+    <%= form.submit "Send" %>
+  <% end %>
+</p>

@@ -1,0 +1,97 @@
+<h3>Users | <%= link_to "add new user", "#" %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Wallet ID</th>
+      <th>Balance</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.map do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.full_name %></td>
+        <td><%= user.wallet_account.id %></td>
+        <td><%= user.wallet_account.balance.format %></td>
+        <td>
+          <%= link_to "view", user_path(user.id) %> |
+          <%= link_to "edit user", "#" %> |
+          <%= link_to "add fund", new_fund_wallet_path(user.wallet_account.id) %> |
+          <%= link_to "transfer fund", new_transfer_wallet_path(user.wallet_account.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr/>
+
+<h3>Teams | <%= link_to "add new team", "#" %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Wallet ID</th>
+      <th>Balance</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.map do |team| %>
+      <tr>
+        <td><%= team.id %></td>
+        <td><%= team.name %></td>
+        <td><%= team.description %></td>
+        <td><%= team.wallet_account.id %></td>
+        <td><%= team.wallet_account.balance.format %></td>
+        <td>
+          <%= link_to "view", "#" %> |
+          <%= link_to "edit team", "#" %> |
+          <%= link_to "add fund", "#" %> |
+          <%= link_to "transfer fund", "#" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr/>
+
+<h3>Stocks | <%= link_to "add new stock", "#" %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Wallet ID</th>
+      <th>Balance</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stocks.map do |stock| %>
+      <tr>
+        <td><%= stock.id %></td>
+        <td><%= stock.name %></td>
+        <td><%= stock.company %></td>
+        <td><%= stock.wallet_account.id %></td>
+        <td><%= stock.wallet_account.balance.format %></td>
+        <td>
+          <%= link_to "view", "#" %> |
+          <%= link_to "edit stock", "#" %> |
+          <%= link_to "add fund", "#" %> |
+          <%= link_to "transfer fund", "#" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

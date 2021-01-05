@@ -1,2 +1,0 @@
-class AccountType < ApplicationRecord
-end

@@ -1,0 +1,33 @@
+<p>
+  Name: <strong><%= @user.full_name %></strong>
+  <br/>
+  Wallet ID: <strong><%= @wallet.id %></strong>
+  <br/>
+  Wallet Balance: <strong><%= @wallet.currency %> <%= @wallet.balance.format %></strong>
+</p>
+<hr/>
+<h3>Transactions</h3>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Type</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Amount</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wallet.transaction_history.each do |transaction_history| %>
+      <tr>
+        <td><%= transaction_history.id %></td>
+        <td><%= transaction_history.code %></td>
+        <td><%= transaction_history.code == :deposit ? transaction_history.partner_account.account.identifier.to_s : transaction_history.account.account.identifier.to_s %></td>
+        <td><%= transaction_history.code == :deposit ? transaction_history.account.account.identifier.to_s : transaction_history.partner_account.account.identifier.to_s %></td>
+        <td><%= transaction_history.amount.format %></td>
+        <td><%= transaction_history.balance.format %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
