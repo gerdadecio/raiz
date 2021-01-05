@@ -9,5 +9,7 @@ Rails.application.routes.draw do
       post 'transfer_fund'
     end
   end
+  resources :stocks
+  resources :teams
   resources :users
 end

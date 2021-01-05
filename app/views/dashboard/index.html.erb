@@ -52,10 +52,10 @@
         <td><%= team.wallet_account.id %></td>
         <td><%= team.wallet_account.balance.format %></td>
         <td>
-          <%= link_to "view", "#" %> |
+          <%= link_to "view", team_path(team.id) %> |
           <%= link_to "edit team", "#" %> |
-          <%= link_to "add fund", "#" %> |
-          <%= link_to "transfer fund", "#" %>
+          <%= link_to "add fund", new_fund_wallet_path(team.wallet_account.id) %> |
+          <%= link_to "transfer fund", new_transfer_wallet_path(team.wallet_account.id) %>
         </td>
       </tr>
     <% end %>
@@ -86,10 +86,10 @@
         <td><%= stock.wallet_account.id %></td>
         <td><%= stock.wallet_account.balance.format %></td>
         <td>
-          <%= link_to "view", "#" %> |
+          <%= link_to "view", stock_path(stock.id) %> |
           <%= link_to "edit stock", "#" %> |
-          <%= link_to "add fund", "#" %> |
-          <%= link_to "transfer fund", "#" %>
+          <%= link_to "add fund", new_fund_wallet_path(stock.wallet_account.id) %> |
+          <%= link_to "transfer fund", new_transfer_wallet_path(stock.wallet_account.id) %>
         </td>
       </tr>
     <% end %>
