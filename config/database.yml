@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: raiz_production
-  username: raiz
+  username: <%= ENV['RAIZ_DATABASE_USERNAME'] %>
   password: <%= ENV['RAIZ_DATABASE_PASSWORD'] %>
