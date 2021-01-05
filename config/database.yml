@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: raiz_production
+  database: <%= ENV['RAIZ_DATABASE'] %>
   username: <%= ENV['RAIZ_DATABASE_USERNAME'] %>
   password: <%= ENV['RAIZ_DATABASE_PASSWORD'] %>
