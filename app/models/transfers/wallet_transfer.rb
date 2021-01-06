@@ -13,7 +13,6 @@ module Transfers
     attr_accessor :destination_account, :source_account, :code, :amount
 
     def initialize(amount, source_account:, destination_account:, code:)
-      @valid = true
       @amount = amount
       @money = Money.from_amount(amount.to_f)
       @source_account = source_account
@@ -22,12 +21,16 @@ module Transfers
     end
 
     def perform
-      DoubleEntry.transfer(
-        @money,
-        from: DoubleEntry.account(@source_account.identifier.to_sym, scope: @source_account.id, currency: 'AUD'),
-        to: DoubleEntry.account(@destination_account.identifier.to_sym, scope: @destination_account.id, currency: 'AUD'),
-        code: @code
-      )
+      if self.valid?
+        DoubleEntry.transfer(
+          @money,
+          from: DoubleEntry.account(@source_account.identifier.to_sym, scope: @source_account.id, currency: 'AUD'),
+          to: DoubleEntry.account(@destination_account.identifier.to_sym, scope: @destination_account.id, currency: 'AUD'),
+          code: @code
+        )
+      else
+        nil
+      end
     rescue DoubleEntry::AccountWouldBeSentNegative => e
       self.errors.add(:base, 'Invalid transfer')
       nil
