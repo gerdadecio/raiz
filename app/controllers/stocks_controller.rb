@@ -10,7 +10,8 @@ class StocksController < ApplicationController
   end
 
   def create
-    @stock = Stock.create(permitted_params[:stock])
+    @stock = Stock.create(stock_params)
+    redirect_to root_path
   end
 
   def edit
@@ -18,11 +19,16 @@ class StocksController < ApplicationController
   end
 
   def update
-    @stock.update_attributes(permitted_params[:stock])
+    @stock.update_attributes(stock_params)
+    redirect_to root_path
   end
 
 private
   def set_stock
     @stock = Stock.find(params[:id])
+  end
+
+  def stock_params
+    params.require(:stock).permit(:name, :code, :company)
   end
 end

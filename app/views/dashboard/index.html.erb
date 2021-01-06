@@ -1,4 +1,6 @@
-<h3>Users | <%= link_to "add new user", "#" %></h3>
+<% content_for(:title) { 'Dashboard' } %>
+
+<h3>Users | <%= link_to "add new user", new_user_path %></h3>
 
 <table>
   <thead>
@@ -19,7 +21,7 @@
         <td><%= user.wallet_account.balance.format %></td>
         <td>
           <%= link_to "view", user_path(user.id) %> |
-          <%= link_to "edit user", "#" %> |
+          <%= link_to "edit user", edit_user_path(user.id) %> |
           <%= link_to "add fund", new_fund_wallet_path(user.wallet_account.id) %> |
           <%= link_to "transfer fund", new_transfer_wallet_path(user.wallet_account.id) %>
         </td>
@@ -30,7 +32,7 @@
 
 <hr/>
 
-<h3>Teams | <%= link_to "add new team", "#" %></h3>
+<h3>Teams | <%= link_to "add new team", new_team_path %></h3>
 
 <table>
   <thead>
@@ -53,7 +55,7 @@
         <td><%= team.wallet_account.balance.format %></td>
         <td>
           <%= link_to "view", team_path(team.id) %> |
-          <%= link_to "edit team", "#" %> |
+          <%= link_to "edit team", edit_team_path(team.id) %> |
           <%= link_to "add fund", new_fund_wallet_path(team.wallet_account.id) %> |
           <%= link_to "transfer fund", new_transfer_wallet_path(team.wallet_account.id) %>
         </td>
@@ -64,12 +66,13 @@
 
 <hr/>
 
-<h3>Stocks | <%= link_to "add new stock", "#" %></h3>
+<h3>Stocks | <%= link_to "add new stock", new_stock_path %></h3>
 
 <table>
   <thead>
     <tr>
       <th>ID</th>
+      <th>Code</th>
       <th>Name</th>
       <th>Company</th>
       <th>Wallet ID</th>
@@ -81,13 +84,14 @@
     <% @stocks.map do |stock| %>
       <tr>
         <td><%= stock.id %></td>
+        <td><%= stock.code %></td>
         <td><%= stock.name %></td>
         <td><%= stock.company %></td>
         <td><%= stock.wallet_account.id %></td>
         <td><%= stock.wallet_account.balance.format %></td>
         <td>
           <%= link_to "view", stock_path(stock.id) %> |
-          <%= link_to "edit stock", "#" %> |
+          <%= link_to "edit stock", edit_stock_path(stock.id) %> |
           <%= link_to "add fund", new_fund_wallet_path(stock.wallet_account.id) %> |
           <%= link_to "transfer fund", new_transfer_wallet_path(stock.wallet_account.id) %>
         </td>

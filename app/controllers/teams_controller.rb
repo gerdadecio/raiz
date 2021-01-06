@@ -10,7 +10,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create(permitted_params[:team])
+    @team = Team.create(team_params)
+    redirect_to root_path
   end
 
   def edit
@@ -18,11 +19,16 @@ class TeamsController < ApplicationController
   end
 
   def update
-    @team.update_attributes(permitted_params[:team])
+    @team.update_attributes(team_params)
+    redirect_to root_path
   end
 
 private
   def set_team
     @team = Team.find(params[:id])
+  end
+
+  def team_params
+    params.require(:team).permit(:name, :description)
   end
 end

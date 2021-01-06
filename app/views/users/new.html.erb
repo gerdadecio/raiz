@@ -1,0 +1,7 @@
+<% content_for(:title) { 'New User' } %>
+
+<p>
+  <%= form_with model: @user, url: users_path, method: :post do |form| %>
+    <%= render 'form', form: form %>
+  <% end %>
+</p>
