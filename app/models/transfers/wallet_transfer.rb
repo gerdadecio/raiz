@@ -8,7 +8,7 @@ module Transfers
     validates :destination_account, presence: { message: 'is invalid' }
     validates :source_account, presence: { message: 'is invalid' }
     validates :code, :amount, presence: true
-    validates :amount, numericality: true
+    validates :amount, numericality: { greater_than: 0}
 
     attr_accessor :destination_account, :source_account, :code, :amount
 
