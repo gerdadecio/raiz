@@ -5,7 +5,7 @@
 </h3>
 <small>Note: Funds will be coming from our vault or App Wallet</small>
 <p>
-  <%= form_with model: @wallet_account, url: add_fund_wallet_path(id: @wallet_account.id), method: :post do |form| %>
+  <%= form_with model: @wallet_account, url: add_fund_wallet_path(id: @wallet_account.id), method: :post, local: true do |form| %>
     <%= form.label 'Amount:' %>
     <%= form.text_field 'amount', value: 0 %>
     <%= form.submit 'Add' %>

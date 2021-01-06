@@ -10,8 +10,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to root_path
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      redirect_to root_path
+    else
+      redirect_to new_user_path, error: @user.errors.full_messages.join(', ')
+    end
   end
 
   def edit
@@ -19,8 +24,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes(user_params)
-    redirect_to root_path
+    if @user.update_attributes(user_params)
+      redirect_to root_path
+    else
+      redirect_to edit_user_path(@user), error: @user.errors.full_messages.join(', ')
+    end
   end
 
 private

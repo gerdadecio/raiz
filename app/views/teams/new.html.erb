@@ -1,7 +1,7 @@
 <% content_for(:title) { 'New Team' } %>
 
 <p>
-  <%= form_with model: @team, url: teams_path, method: :post do |form| %>
+  <%= form_with model: @team, url: teams_path, method: :post, local: true do |form| %>
     <%= render 'form', form: form %>
   <% end %>
 </p>

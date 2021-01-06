@@ -1,7 +1,7 @@
 <% content_for(:title) { 'Edit Team' } %>
 
 <p>
-  <%= form_with model: @team, url: team_path(id: @team.id), method: :put do |form| %>
+  <%= form_with model: @team, url: team_path(id: @team.id), method: :put, local: true do |form| %>
     <%= render 'form', form: form %>
   <% end %>
 </p>

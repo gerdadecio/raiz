@@ -1,4 +1,4 @@
-# General handling for addresses.
+# General handling for accounts.
 module AccountHandler
   extend ActiveSupport::Concern
 
@@ -13,10 +13,10 @@ module AccountHandler
 
   def create_wallet_account
     Account.find_or_create_by(
-      identifier: Account::TYPES[:wallet],
-      currency: Money.default_currency.iso_code,
+      identifier:          Account::TYPES[:wallet],
+      currency:            Money.default_currency.iso_code,
       account_holder_type: self.class.name,
-      account_holder_id: self.id
+      account_holder_id:   self.id
     )
   end
 

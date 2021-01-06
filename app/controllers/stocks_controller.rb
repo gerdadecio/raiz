@@ -10,8 +10,13 @@ class StocksController < ApplicationController
   end
 
   def create
-    @stock = Stock.create(stock_params)
-    redirect_to root_path
+    @stock = Stock.new(stock_params)
+    if @stock.valid?
+      @stock.save
+      redirect_to root_path
+    else
+      redirect_to new_stock_path, error: @stock.errors.full_messages.join(', ')
+    end
   end
 
   def edit
@@ -19,8 +24,11 @@ class StocksController < ApplicationController
   end
 
   def update
-    @stock.update_attributes(stock_params)
-    redirect_to root_path
+    if @stock.update_attributes(stock_params)
+      redirect_to root_path
+    else
+      redirect_to edit_user_path(@stock), error: @stock.errors.full_messages.join(', ')
+    end
   end
 
 private

@@ -4,7 +4,7 @@
   Current balance: <%= @wallet_account.balance.format %>
 </h3>
 <p>
-  <%= form_with model: @wallet_account, url: transfer_fund_wallet_path(@wallet_account.id), method: :post do |form| %>
+  <%= form_with model: @wallet_account, url: transfer_fund_wallet_path(@wallet_account.id), method: :post, local: true do |form| %>
     <%= form.label "To Account ID:" %>
     <%= form.number_field "to" %>
     <%= form.label "Amount:" %>
